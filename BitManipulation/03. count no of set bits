@@ -1,0 +1,10 @@
+class Solution {
+    public static int countSetBits(int N) {
+        int count = 0;
+        while (N != 0) {
+            N = N & (N - 1); // Removes the rightmost set bit
+            count++;
+        }
+        return count;
+    }
+}
