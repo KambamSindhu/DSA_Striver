@@ -1,0 +1,36 @@
+class solve {
+    // Function to find all possible unique subsets.
+    public static ArrayList<ArrayList<Integer>> AllSubsets(int arr[], int n) {
+        // your code here
+        Arrays.sort(arr);
+        ArrayList<ArrayList<Integer>> res =new ArrayList<>();
+        int subsets=1<<n;
+        Set<ArrayList<Integer>> set=new HashSet<>();
+        for(int i=0;i<subsets;i++)
+        {
+            ArrayList<Integer> list=new ArrayList<>();
+            for(int j=0;j<n;j++)
+            {
+                if((i&(1<<j))!=0)
+                {
+                    list.add(arr[j]);
+                }
+            }
+            set.add(list);
+        }
+        res.addAll(set);
+        Collections.sort(res, new Comparator<ArrayList<Integer>>() {
+            public int compare(ArrayList<Integer> a, ArrayList<Integer> b) {
+                int i = 0;
+                while (i < a.size() && i < b.size()) {
+                    if (!a.get(i).equals(b.get(i)))
+                        return a.get(i) - b.get(i);
+                    i++;
+                }
+                return a.size() - b.size();
+            }
+        });
+
+        return res;
+    }
+}
