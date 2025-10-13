@@ -1,0 +1,10 @@
+class Solution {
+    public static boolean isPowerofTwo(int N) {
+        // code here
+        if((N&N-1)==0)
+        {
+            return true;
+        }
+        return false;
+    }
+}
