@@ -1,0 +1,22 @@
+// User function Template for Java
+
+class Solution {
+    int replaceBit(int N, int K) {
+        int totalBits = (int)(Math.floor(Math.log(N) / Math.log(2))) + 1;
+        
+        // Step 2: If K is greater than total bits, return N (no such bit)
+        if (K > totalBits) return N;
+        
+        // Step 3: Convert K (from left) to bit index from right (0-based)
+        int bitFromRight = totalBits - K;
+        
+        // Step 4: Check if that bit is 1
+        if ((N & (1 << bitFromRight)) != 0) {
+            // If 1, make it 0
+            N = N & (~(1 << bitFromRight));
+        }
+        
+        // Step 5: Return modified number
+        return N;
+    }
+}
