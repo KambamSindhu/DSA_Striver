@@ -1,0 +1,22 @@
+class Solution {
+    public ArrayList<ArrayList<Integer>> subsets(int arr[]) {
+        // code here
+        int n=arr.length;
+        ArrayList<ArrayList<Integer>> res=new ArrayList<>();
+        
+        int subsets=1<<n;
+        for(int i=0;i<subsets;i++)
+        {
+         ArrayList<Integer> list =new ArrayList<>();
+            for(int j=0;j<n;j++)
+            {
+                if((i&(1<<j))!=0)
+                {
+                    list.add(arr[j]);
+                }
+            }
+            res.add(list);
+        }
+        return res;
+    }
+}
