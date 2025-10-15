@@ -1,0 +1,30 @@
+class Solution {
+    public int countSubarrays(int[] arr, int k) {
+        // code here
+        return subArrayswithKodds(arr,k)-subArrayswithKodds(arr,k-1);
+    }
+    public int subArrayswithKodds(int arr[],int k)
+    {
+        int odds=0;
+        int l=0,r=0,cnt=0;
+        int n=arr.length;
+        while(r<n)
+        {
+            if(arr[r]%2!=0)
+            {
+                odds++;
+            }
+            while(odds>k)
+            {
+                if(arr[l]%2!=0)
+                {
+                    odds--;
+                }
+                l++;
+            }
+            cnt=cnt+r-l+1;
+          r++;  
+        }
+        return cnt;
+    }
+}
