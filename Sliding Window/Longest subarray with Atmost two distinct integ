@@ -1,0 +1,33 @@
+class Solution {
+    public int totalElements(int[] arr) {
+        // code here
+        HashMap<Integer,Integer> map=new HashMap<>();
+        int l=0,r=0;
+        int max=0;
+        int n=arr.length;
+        while(r<n)
+        {
+            if(!map.containsKey(arr[r]))
+            {
+                map.put(arr[r],1);
+            }
+            else{
+                map.put(arr[r],map.get(arr[r])+1);
+            }
+            if(map.size()<=2)
+            {
+                max=Math.max(max,r-l+1);
+            }
+            else{
+                map.put(arr[l],map.get(arr[l])-1);
+                if(map.get(arr[l])==0)
+                {
+                    map.remove(arr[l]);
+                }
+                l++;
+            }
+            r++;
+        }
+        return max;
+    }
+}
