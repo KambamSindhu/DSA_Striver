@@ -1,0 +1,31 @@
+class Solution {
+    public int maxOnes(int arr[], int k) {
+        // code here
+        int l=0,r=0;
+        int n=arr.length;
+        int zeros=0;
+        int maxOne=0;
+        while(r<n)
+        {
+            if(arr[r]==0)
+            {
+                zeros++;
+            }
+            if(zeros>k)
+            {
+                if(arr[l]==0)
+                {
+                    zeros--;
+                    
+                }
+                l++;
+            }
+            if(zeros<=k)
+            {
+                maxOne=Math.max(maxOne,r-l+1);
+            }
+            r++;
+        }
+        return maxOne;
+    }
+}
