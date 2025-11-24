@@ -1,0 +1,23 @@
+class Solution {
+    public int binarysearch(int[] arr, int k) {
+        return binary(arr, 0, arr.length - 1, k);
+    }
+
+    public int binary(int[] arr, int low, int high, int k) {
+        if (low > high) return -1;
+
+        int mid = low + (high - low) / 2;
+
+        if (arr[mid] == k) {
+            // look left for first occurrence
+            int left = binary(arr, low, mid - 1, k);
+            return (left == -1) ? mid : left;
+        }
+        else if (arr[mid] < k) {
+            return binary(arr, mid + 1, high, k);
+        }
+        else {
+            return binary(arr, low, mid - 1, k);
+        }
+    }
+}
